@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button";
+import MainLayout from "./MainLayout";
 
-function App() {
+export default function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background">
-      <Button>View my projects</Button>
-    </main>
+    <MainLayout>
+      <section className="flex bg-background"></section>
+    </MainLayout>
   );
 }
-
-export default App;
