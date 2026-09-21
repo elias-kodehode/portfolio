@@ -5,41 +5,33 @@ export default function App() {
   return (
     <MainLayout>
       <div className="relative isolate overflow-hidden">
-        {/* Background decoration */}
-        {/* <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[500px] overflow-hidden"
-        >
-          <div className="absolute left-1/2 top-[-250px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute left-[10%] top-[100px] h-40 w-40 rounded-full bg-purple-500/10 blur-3xl" />
-          <div className="absolute right-[10%] top-[150px] h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        </div> */}
-        <section className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
-          <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-background to-transparent" />
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-8 sm:py-24">
+      <div className="relative">
+        <Shadow direction="right" />
 
-            <DragScroll>
-              <div className="flex gap-6 py-4">
-                <div className="w-[calc((100%-3rem)/3)] shrink-0">
-                  <Card icon="*" title="C#/.NET" description="-" />
-                </div>
+        <DragScroll>
+          <div className="flex gap-4 py-4 sm:gap-6">
+            <div className="w-[85%] shrink-0 sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]">
+              <Card icon="*" title="C#/.NET" description="-" />
+            </div>
 
-                <div className="w-[calc((100%-3rem)/3)] shrink-0">
-                  <Card icon="*" title="JS/TS" description="React" />
-                </div>
+            <div className="w-[85%] shrink-0 sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]">
+              <Card icon="*" title="JS/TS" description="React" />
+            </div>
 
-                <div className="w-[calc((100%-3rem)/3)] shrink-0">
-                  <Card icon="*" title="Docker" description="-" />
-                </div>
+            <div className="w-[85%] shrink-0 sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]">
+              <Card icon="*" title="Docker" description="-" />
+            </div>
 
-                <div className="w-[calc((100%-3rem)/3)] shrink-0">
-                  <Card icon="*" title="Aspire" description="-" />
-                </div>
-              </div>
-            </DragScroll>
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-background to-transparent" />
+            <div className="w-[85%] shrink-0 sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]">
+              <Card icon="*" title="Aspire" description="-" />
+            </div>
           </div>
-        </section>
+        </DragScroll>
+
+        <Shadow direction="left" />
+      </div>
+      </section>
         {/* Footer */}
         <footer className="border-t">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
@@ -49,6 +41,21 @@ export default function App() {
         </footer>
       </div>
     </MainLayout>
+  );
+}
+
+
+type Direction = "left" | "right";
+
+function Shadow({ direction }: { direction: Direction }) {
+  const isLeft = direction === "left";
+
+  return (
+    <div
+      className={`pointer-events-none absolute inset-y-0 z-10 w-8 sm:w-12 ${
+        isLeft ? "left-0 bg-linear-to-r" : "right-0 bg-linear-to-l"
+      } from-background to-transparent`}
+    />
   );
 }
 
